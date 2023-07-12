@@ -12,7 +12,7 @@ const app = express();
 app.use(handlers.internalServerError);
 
 app.get("/events/getall", getAllEvents);
-app.get("/events/event_sessions", getSessionInfo);
+app.get("/events/event_sessions/:id", getSessionInfo);
 
 app.listen(port, () =>
   console.log(

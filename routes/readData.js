@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const eventInfoModel = require("../models/eventInfo");
 const handlers = require("./handlers");
 const session_info = require("../models/sessionInfo");
@@ -18,8 +19,10 @@ exports.getAllEvents = async (req, res) => {
 // exports.findEvents = (req, res) => {};
 
 exports.getSessionInfo = (req, res) => {
+  console.log(req.params.id);
   eventInfoModel
     .aggregate([
+      { $match: { _id: new mongoose.Types.ObjectId(req.params.id) } },
       {
         $lookup: {
           from: session_info.collection.name,
