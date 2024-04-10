@@ -1,5 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
+// const DBconnection = mongoose.connection;
 
 const mongoUser = process.env.MONGODB_USER || "reader";
 const mongoPW = process.env.MONGODB_PW || "reader";
@@ -10,12 +11,7 @@ if (mongoUser == "reader" || mongoPW == "reader") {
 }
 
 const url = `mongodb+srv://${mongoUser}:${mongoPW}@comptracker.1mlxuai.mongodb.net/${database}?retryWrites=true&w=majority`;
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const DBconnection = mongoose.connection;
-DBconnection.on("error", function () {
-  console.error("Failed to connect to MongoDB.");
-});
-DBconnection.once("open", function () {
-  console.log(`Successfully connected to MongoDB database ${database}.`);
-});
+mongoose
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(console.log(`Successfully connected to MongoDB database ${database}.`))
+  .catch((err) => console.error(err));

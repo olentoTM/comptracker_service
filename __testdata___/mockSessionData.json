@@ -1,0 +1,60 @@
+[
+  {
+    "_id": "64889390261b7b161da3dc03",
+    "map": "Atlas Torres",
+    "date": "2023-06-04T00:00:00.000Z",
+    "completed": true,
+    "results": [
+      {
+        "player": {
+          "_id": "6482012381c6a48184814aff"
+        },
+        "finished": true,
+        "position": 1
+      },
+      {
+        "player": {
+          "_id": "64889867261b7b161da3dc04"
+        },
+        "finished": true,
+        "position": 2
+      },
+      {
+        "player": {
+          "_id": "64889e2e261b7b161da3dc05"
+        },
+        "finished": false,
+        "position": 0
+      }
+    ]
+  },
+  {
+    "_id": "64889ec7261b7b161da3dc06",
+    "map": "Mannahatta",
+    "date": "2024-06-04T00:00:00.000Z",
+    "completed": false,
+    "results": [
+      {
+        "player": {
+          "_id": "6482012381c6a48184814aff"
+        },
+        "finished": false,
+        "position": 0
+      },
+      {
+        "player": {
+          "_id": "64889867261b7b161da3dc04"
+        },
+        "finished": false,
+        "position": 0
+      },
+      {
+        "player": {
+          "_id": "64889e2e261b7b161da3dc05"
+        },
+        "finished": false,
+        "position": 0
+      }
+    ]
+  }
+]

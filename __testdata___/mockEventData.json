@@ -1,0 +1,16 @@
+{
+  "_id": "6481febf81c6a48184814afe",
+  "event_name": "Video Game Tournmanet Season 1\"",
+  "sessions": [
+    {
+      "_id": "64889390261b7b161da3dc03"
+    },
+    {
+      "_id": "64889ec7261b7b161da3dc06"
+    }
+  ],
+  "start_date": "2023-06-04T22:00:00.000Z",
+  "end_date": "2024-06-04T22:00:00.000Z",
+  "max_participants": 10,
+  "participants": 4
+}
