@@ -245,6 +245,7 @@ exports.updateResults = async (req, res) => {
 
   console.log("SORTED: ", sortedList);
 
+  // Päivitetään position arvo indeksin mukaisesti.
   for (let i = 0; i < sortedList.length; i++) {
     sortedList[i].position = i + 1;
   }
