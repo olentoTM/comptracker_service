@@ -94,9 +94,9 @@ exports.addNewParticipant = async (req, res) => {
     .then((result) => {
       return result;
     })
-    .catch((error) =>
-      res.status(500).json("Failed to add participant to event ", error)
-    );
+    .catch((error) => {
+      return res.status(500).json("Failed to add participant to event ", error);
+    });
 
   // Päivitetään vielä mahdolliset sessiot
   if (oldEvent.sessions.length > 0) {
@@ -110,11 +110,11 @@ exports.addNewParticipant = async (req, res) => {
         }
       )
       .then((results) => console.info("Päivitetty sessiot: ", results))
-      .catch((error) =>
-        res
+      .catch((error) => {
+        return res
           .staus(500)
-          .json("Pelaajan lisääminen sessioihin epäonnistui ", error)
-      );
+          .json("Pelaajan lisääminen sessioihin epäonnistui ", error);
+      });
   }
 
   res.status(200).json(updatedEvent);
@@ -243,15 +243,13 @@ exports.updateResults = async (req, res) => {
     return 0;
   });
 
-  // console.log("SORTED: ", sortedList);
+  console.log("SORTED: ", sortedList);
 
-  const finalList = sortedList.map((item, index) => {
-    if (item.position != index + 1) {
-      return { ...item, position: index + 1 };
-    } else {
-      return { ...item };
-    }
-  });
+  for (let i = 0; i < sortedList.length; i++) {
+    sortedList[i].position = i + 1;
+  }
+
+  console.log("FINAL: ", sortedList);
 
   // Lisätään uusi leaderboard sessioon.
   await sessionInfo
@@ -269,7 +267,7 @@ exports.updateResults = async (req, res) => {
 
   // Ja lopuksi lisätään uudet pisteet tapahtumaan
   await eventInfo
-    .findByIdAndUpdate(eventId, { participants: finalList })
+    .findByIdAndUpdate(eventId, { participants: sortedList })
     .then((response) => {
       return res
         .status(200)
